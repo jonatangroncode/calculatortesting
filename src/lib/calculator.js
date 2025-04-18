@@ -1,8 +1,13 @@
 export const createCalculator = () => ({
-  add: (a, b) => a + b,
+  addition: (a, b) => a + b,
   subtraction: (a, b) => a - b,
   multiplication: (a, b) => a * b,
-  division: (a, b) => a / b,
+  division: (a, b) => {
+    if (b === 0) {
+      throw new Error("Går inte att dividera med 0");
+    }
+    return a / b;
+  },
 });
 
-console.log(createCalculator().add(1, 2));
+console.log(createCalculator().addition(1, 2));
