@@ -6,10 +6,32 @@ const LogIn = () => {
     username: "",
     password: "",
   });
+  const [token, setToken] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data:", formData);
+    try {
+      const response = await fetch(
+        "https://tokenservice-jwt-2025.fly.dev/token-service/v1/request-token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: formData.username,
+            password: formData.password,
+          }),
+        }
+      );
+      if (!response.ok) throw new Error("Login failed");
+      const JwtToken = await response.text();
+      localStorage.setItem("jwtToken", JwtToken);
+      setToken(JwtToken);
+      console.log("Token received:", JwtToken);
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (
