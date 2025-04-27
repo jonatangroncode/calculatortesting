@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,8 @@ const Register = () => {
       timestamp: new Date().toISOString(),
     },
   });
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ const Register = () => {
 
       const data = await response.text();
       console.log("Registrering lyckades:", data);
+      navigate("/login");
 
       console.log(response);
     } catch (error) {
