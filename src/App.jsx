@@ -1,10 +1,12 @@
 import "./App.css";
-import { createCalculator } from "./lib/calculator";
+import Register from "./pages/Register/Register";
 
 function App() {
-  const calculator = createCalculator();
-  console.log(calculator.add(1, 2));
-  return <></>;
+  return (
+    <>
+      <Register />
+    </>
+  );
 }
 
 export default App;
