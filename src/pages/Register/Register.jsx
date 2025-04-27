@@ -12,9 +12,30 @@ const Register = () => {
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    try {
+      const response = await fetch(
+        "https://tokenservice-jwt-2025.fly.dev/user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Något gick fel vid registrering.");
+      }
+
+      const data = await response.text();
+      console.log("Registrering lyckades:", data);
+
+      console.log(response);
+    } catch (error) {
+      console.error("Error vid registrering:", error);
+    }
   };
 
   return (
@@ -23,37 +44,33 @@ const Register = () => {
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label
+            <label htmlFor="username">Username: </label>
+            <input
               type="text"
               id="username"
               name="username"
-              htmlFor="username"
               value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
               }
               required
-            >
-              Username:{" "}
-            </label>
-            <input type="text" id="username" name="username" required />
+            />
           </div>
+
           <div>
-            <label
+            <label htmlFor="password">Password: </label>
+            <input
               type="password"
               id="password"
               name="password"
-              htmlFor="password"
               value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
               required
-            >
-              Password:{" "}
-            </label>
-            <input type="password" id="password" name="password" required />
+            />
           </div>
+
           <div>
             <select
               name="role"
