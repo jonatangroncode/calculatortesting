@@ -1,5 +1,4 @@
 import { createCalculator } from "../lib/calculator";
-import { test, expect, describe, beforeEach } from "vitest";
 
 describe("calculator", () => {
   let calculator;
