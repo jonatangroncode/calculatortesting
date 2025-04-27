@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -90,6 +91,7 @@ const Register = () => {
 
           <button type="submit">Register</button>
         </form>
+        <Link to="/login">Logga in</Link>
       </main>
     </div>
   );
