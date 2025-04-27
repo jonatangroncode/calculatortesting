@@ -6,6 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    director: "",
+    description: "",
+    productionYear: "",
+  });
 
   const navigate = useNavigate();
 
@@ -45,6 +52,21 @@ const Homepage = () => {
   return (
     <main>
       <h1>Välkommen till en hemsida som visar upp dina filmer!</h1>
+      <section>
+        <button onClick={fetchMovies}>Logga in och hämta filmer</button>
+        {error && <p>{error}</p>}
+        <ul>
+          {movies.map((b, i) => (
+            <li key={i}>
+              <strong>{b.title}</strong>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h2>Skapa ny film</h2>
+        <form></form>
+      </section>
     </main>
   );
 };
