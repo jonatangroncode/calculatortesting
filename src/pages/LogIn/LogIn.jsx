@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,8 @@ const LogIn = () => {
     password: "",
   });
   const [token, setToken] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +31,7 @@ const LogIn = () => {
       const JwtToken = await response.text();
       localStorage.setItem("jwtToken", JwtToken);
       setToken(JwtToken);
-      console.log("Token received:", JwtToken);
+      navigate("/home");
     } catch (error) {
       console.error("Error during login:", error);
     }
