@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import MovieList from "../../components/MovieList/MovieList";
 
 const Homepage = () => {
   const [movies, setMovies] = useState([]);
@@ -82,16 +83,9 @@ const Homepage = () => {
   return (
     <main>
       <h1>Välkommen till en hemsida som visar upp dina filmer!</h1>
-      <section>
-        {error && <p>{error}</p>}
-        <ul>
-          {movies.map((b, i) => (
-            <li key={i}>
-              <strong>{b.title}</strong>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {error && <p>{error}</p>}
+      <MovieList movies={movies} />
+
       <section>
         <h2>Skapa ny film</h2>
         <form onSubmit={handleSubmit}>
