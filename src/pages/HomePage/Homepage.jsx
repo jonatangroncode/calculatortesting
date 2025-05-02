@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
+import CreateMovie from "../../components/CreateMovie/CreateMovie";
 
 const Homepage = () => {
   const [movies, setMovies] = useState([]);
@@ -86,61 +87,12 @@ const Homepage = () => {
       {error && <p>{error}</p>}
       <MovieList movies={movies} />
 
-      <section>
-        <h2>Skapa ny film</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="title">Title: </label>
-            <input
-              type="title"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={(e) =>
-                setFormData({ ...formData, title: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label htmlFor="director">Director: </label>
-            <input
-              type="director"
-              id="director"
-              name="director"
-              value={formData.director}
-              onChange={(e) =>
-                setFormData({ ...formData, director: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label htmlFor="description">Description: </label>
-            <input
-              type="text"
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label htmlFor="productionYear">productionYear: </label>
-            <input
-              type="number"
-              id="productionYear"
-              name="productionYear"
-              value={formData.productionYear}
-              onChange={(e) =>
-                setFormData({ ...formData, productionYear: e.target.value })
-              }
-              required
-            />
-          </div>
-          <button>Posta film</button>
-        </form>
-      </section>
+      <CreateMovie
+        handleSubmit={handleSubmit}
+        formData={formData}
+        setFormData={setFormData}
+      />
+
       <button className="logout">
         <Link to="/login">Logga ut</Link>
       </button>

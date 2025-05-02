@@ -7,7 +7,7 @@ const LogIn = () => {
     username: "",
     password: "",
   });
-  const [token, setToken] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -30,10 +30,10 @@ const LogIn = () => {
       if (!response.ok) throw new Error("Login failed");
       const JwtToken = await response.text();
       localStorage.setItem("jwtToken", JwtToken);
-      setToken(JwtToken);
       navigate("/home");
     } catch (error) {
       console.error("Error during login:", error);
+      setError(error.message);
     }
   };
 
@@ -68,6 +68,13 @@ const LogIn = () => {
           />
         </div>
         <button type="submit">Logga in</button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <p>
+          inget konto?{" "}
+          <a href="/" style={{ color: "blue" }}>
+            Skapa konto
+          </a>
+        </p>
       </form>
       <form action="">
         <div></div>

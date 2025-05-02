@@ -95,7 +95,12 @@ const Register = () => {
 
           <button type="submit">Register</button>
         </form>
-        <Link to="/login">Logga in</Link>
+        <p>
+          har du redan skapat?{" "}
+          <Link to="/login" style={{ color: "blue" }}>
+            Logga in
+          </Link>
+        </p>
       </main>
     </div>
   );
