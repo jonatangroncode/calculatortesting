@@ -1,12 +1,30 @@
-# React + Vite
+# Calculator Testing och Frontend för att läggatill filmer som en inloggad användare 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Detta är ett React-projekt som implementerar en enkel kalkylator med fokus på **testdriven utveckling (TDD)** med **Vitest** och **Testing Library**. Projektet använder **Vite** som bundler och utvecklingsserver, och är byggt för att vara snabbt, modulärt och testbart.
 
-Currently, two official plugins are available:
+Det är även en React applikation som som gör http anrop mot ett API för att skapa användare logga in med JWT-token ochn spara och visa upp filmer. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Klona projektet:
+
+   
+   git clone https://github.com/jonatangroncode/calculatortesting.git
+
+2. cd calculatortesting
+
+3. npm install
+
+4. Kör projekt
+
+   **Starta utvecklingsservern:**
+   ```
+   npm run dev
+   ```
+
+      **Kör enhetstester:**
+   ``` 
+   npm run test
+   ```
